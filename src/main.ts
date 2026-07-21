@@ -176,7 +176,7 @@ function ready() {
 }
 
 function endGame(win: boolean) {
-  const path = win ? "public/assets/success.wav" : "public/assets/failure.wav";
+  const path = win ? "assets/success.wav" : "assets/failure.wav";
   const outcomeSound = Sound.from(path);
   outcomeSound.play({ volume: 0.25 });
 
@@ -240,7 +240,7 @@ function enemyShoot(
 }
 
 function death() {
-  const death = Sound.from("public/assets/explosion2.wav");
+  const death = Sound.from("assets/explosion2.wav");
   death.play({ volume: 3 });
 }
 
@@ -318,7 +318,7 @@ function definePlayerBehavioir() {
       bullet.y = pos.y - window.player.height / 4;
 
       window.bulletGroup.addChild(bullet);
-      const shoot = Sound.from("public/assets/shoot.wav");
+      const shoot = Sound.from("assets/shoot.wav");
       shoot.play({ volume: 0.1 });
     }
   };
@@ -435,7 +435,7 @@ function startMusic() {
     window.music.stop();
     window.music.destroy();
   }
-  window.music = Sound.from("public/assets/loop1.wav");
+  window.music = Sound.from("assets/loop1.wav");
   window.music.play({ loop: true, volume: 0.25 });
 }
 
@@ -470,14 +470,14 @@ function takeDamage(player: Sprite, animations: Record<string, Texture[]>) {
   // player losing life
   if (playerLife3 !== null && !playerLife3.destroyed) {
     playerLife3.destroy();
-    const hit = Sound.from("public/assets/pain_jack_02.wav");
+    const hit = Sound.from("assets/pain_jack_02.wav");
     hit.play({ volume: 1 });
   } else if (playerLife2 !== null && !playerLife2.destroyed) {
     playerLife2.destroy();
-    const hit = Sound.from("public/assets/pain_jack_03.wav");
+    const hit = Sound.from("assets/pain_jack_03.wav");
     hit.play({ volume: 1 });
   } else if (playerLife1 !== null) {
-    const hit = Sound.from("public/assets/pain_jack_01.wav");
+    const hit = Sound.from("assets/pain_jack_01.wav");
     hit.play({ volume: 1 });
     playerLife1.destroy();
   }
@@ -599,7 +599,7 @@ function gameLogic(state: GameState) {
     } else {
       sound = "enemyShoot";
     }
-    const shoot = Sound.from(`public/assets/${sound}.wav`);
+    const shoot = Sound.from(`assets/${sound}.wav`);
     let volume = 0.1;
     if (sound == "enemyShoot1") {
       volume = 0.25;
@@ -674,7 +674,7 @@ function gameLogic(state: GameState) {
           }
         } else {
           // enemy take damage sfx
-          const hit = Sound.from("public/assets/hit.wav");
+          const hit = Sound.from("assets/hit.wav");
           hit.play({ volume: 3 });
         }
       }
@@ -707,7 +707,7 @@ function gameLogic(state: GameState) {
         ) {
           const bullet = new Sprite(activeEnemyBullet.texture);
           window.enemyBulletGroup.addChild(bullet);
-          const shoot = Sound.from(`public/assets/enemyShoot.wav`);
+          const shoot = Sound.from(`assets/enemyShoot.wav`);
           shoot.play({ volume: 0.1 });
           window.scatterRemaining--;
 
